@@ -21,8 +21,7 @@ public class Task implements Runnable {
 	public void run() {
 		dropper.drop(blocks.get(current));
 		current++;
-
-		System.out.println(current + " " + blocks.size());
+		
 		if (current == blocks.size())
 			dropper.cancel(this);
 	}
