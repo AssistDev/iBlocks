@@ -32,24 +32,15 @@ public class ConnectedBlocks {
 	}
 
 	private void iterate(List<Block> placedBlocks) {
+		if (placedBlocks == null || placedBlocks.isEmpty())
+			return;
+		
 		List<Block> relatives = collectBlocks(placedBlocks.get(0), placedBlocks, new ArrayList<Block>());
 
 		if (relatives == null || relatives.isEmpty())
 			return;
 
 		connectedBlockArrays.add((ArrayList<Block>) relatives);
-		/*Iterator<Block> iterator = placedBlocks.iterator();
-
-		while (iterator.hasNext()) {
-			Block next = iterator.next();
-
-			List<Block> relatives = collectBlocks(next, new ArrayList<Block>());
-
-			if (relatives == null || relatives.isEmpty())
-				continue;
-
-			connectedBlockArrays.add((ArrayList<Block>) relatives);
-		}*/
 	}
 
 	BlockFace[] directions = new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST };
