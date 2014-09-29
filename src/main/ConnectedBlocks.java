@@ -1,4 +1,4 @@
-package test;
+package main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +34,9 @@ public class ConnectedBlocks {
 	private void iterate(List<Block> placedBlocks) {
 		if (placedBlocks == null || placedBlocks.isEmpty())
 			return;
-		
-		List<Block> relatives = collectBlocks(placedBlocks.get(0), placedBlocks, new ArrayList<Block>());
 
+		List<Block> relatives = collectBlocks(placedBlocks.get(0), placedBlocks, new ArrayList<Block>());
+		
 		if (relatives == null || relatives.isEmpty())
 			return;
 
@@ -45,14 +45,13 @@ public class ConnectedBlocks {
 
 	BlockFace[] directions = new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST };
 
-	private List<Block> collectBlocks(Block origin, List<Block> placedBlocks, List<Block> collected) {
+	private List<Block> collectBlocks(Block origin, List<Block> list, List<Block> collected) {
 		for (BlockFace direction : directions) {
-
 			Block b = origin.getRelative(direction);
 
-			if (b.getType() == origin.getType() && !collected.contains(b) && placedBlocks.contains(b)) {
+			if (b.getType() == origin.getType() && !collected.contains(b) && list.contains(b)) {
 				collected.add(b);
-				collectBlocks(b, placedBlocks, collected);
+				collectBlocks(b, list, collected);
 			}
 		}
 
