@@ -42,7 +42,7 @@ public class Main extends JavaPlugin implements Listener {
 		if (connectionList == null) {
 			return;
 		}
-
+		
 		ArrayList<Block> newConnectionList = directionalSearch(connectionList);
 
 		Dropper dropper = new Dropper(this);
